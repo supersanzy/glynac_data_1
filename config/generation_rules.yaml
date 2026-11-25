@@ -1,0 +1,149 @@
+initial_records:
+  customers: 30
+  categories: 8
+  suppliers: 5
+  products: 25
+  discounts: 5
+  orders: 60
+  order_items: 120
+  payments: 60
+  inventory: 25
+  shipments: 50
+  returns: 10
+  reviews: 35
+
+
+new_records:
+  description: >
+      This section defines the rules for generating new records in the e-commerce platform, specifying how many records can be created per organization. 
+      It ensures that the system can handle new data while maintaining performance and data integrity.
+  customers: 5
+  categories: 0
+  suppliers: 0
+  products: 4
+  discounts: 2
+  orders: 20
+  order_items: 35
+  payments: 20
+  inventory: 4
+  shipments: 6
+  returns: 1
+  reviews: 3
+
+updates:
+  description: >
+      This section defines the update rules for the e-commerce platform, specifying how many records can be updated per organization. 
+      It ensures that updates are controlled and do not exceed specified limits, maintaining data integrity and consistency across the system.
+  min_records_per_org: 12
+  max_records_per_org: 20
+
+
+business_rules:
+  description: >
+      This section defines the business rules for the e-commerce platform, including order lifecycle, 
+      payment lifecycle, shipment lifecycle, return and review rules, and inventory management rules. 
+      These rules ensure that the system operates smoothly and maintains data integrity across various operations.
+      
+  order_lifecycle:
+    PENDING:
+      - CONFIRMED
+      - CANCELLED
+
+    CONFIRMED:
+      - PROCESSING
+
+    PROCESSING:
+      - SHIPPED
+
+    SHIPPED:
+      - DELIVERED
+
+    DELIVERED: []
+
+    CANCELLED: []
+
+  payment_lifecycle:
+    PENDING:
+      - SUCCESSFUL
+      - FAILED
+
+    SUCCESSFUL: []
+
+    FAILED: []
+  
+  shipment_lifecycle:
+    PROCESSING:
+      - IN_TRANSIT
+
+    IN_TRANSIT:
+      - DELIVERED
+
+    DELIVERED: []
+
+
+  return_and_review_rules:
+    return_initial_status: PENDING
+
+    allowed_return_statuses:
+      - APPROVED
+      - REJECTED
+    
+    return_requires_delivered_order: true
+
+    review_requires_delivered_order: true
+
+    one_review_per_order_item_per_customer: true
+
+  inventory_rules:
+    one_record_per_product: true
+
+    decrease_stock_on_successful_order: true
+
+    exclude_failed_and_cancelled_orders: true
+
+    allow_restocking: true
+
+    prevent_negative_stock: true
+
+    maintain_movement_history: false
+  
+  order_requires_successful_payment: true
+
+
+data_integrity:
+  enforce_org_isolation: true
+
+  enforce_no_deletions: true
+
+  uniqueness:
+    scope: org_id
+
+  enforce_snapshot_preservation: true
+  
+  referential_integrity:
+    customers:
+      - orders
+
+    categories:
+      - products
+
+    suppliers:
+      - products
+
+    products:
+      - order_items
+      - inventory
+
+    orders:
+      - payments
+      - returns
+      - order_items
+      - shipments
+
+    order_items:
+      - reviews
+  
+
+
+
+    

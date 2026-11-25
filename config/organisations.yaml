@@ -1,0 +1,9 @@
+organisations:
+  - org_id: ORG_001
+    name: UrbanMart
+
+  - org_id: ORG_002
+    name: TechHaven
+
+  - org_id: ORG_003
+    name: DailyNeeds
