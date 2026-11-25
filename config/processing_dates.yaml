@@ -1,0 +1,42 @@
+processing_rules:
+  new_records_per_org:
+    scope: org_id
+  
+  processing_dates:
+    start_date: 2026-11-10
+    end_date: 2026-11-16
+
+  processing_days:
+    - day: 1
+      date: 2026-11-10
+      generation_type: initial
+
+    - day: 2
+      date: 2026-11-11
+      generation_type: incremental
+      new_records_per_org: 15
+
+    - day: 3
+      date: 2026-11-12
+      generation_type: incremental
+      new_records_per_org: 17
+
+    - day: 4
+      date: 2026-11-13
+      generation_type: incremental
+      new_records_per_org: 16
+
+    - day: 5
+      date: 2026-11-14
+      generation_type: incremental
+      new_records_per_org: 18
+
+    - day: 6
+      date: 2026-11-15
+      generation_type: incremental
+      new_records_per_org: 17
+
+    - day: 7
+      date: 2026-11-16
+      generation_type: incremental
+      new_records_per_org: 17
