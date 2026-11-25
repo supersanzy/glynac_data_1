@@ -13,10 +13,9 @@ initial_records:
   reviews: 35
 
 
+# This section defines the rules for generating new records in the e-commerce platform, specifying how many records can be created per organization. 
+# It ensures that the system can handle new data while maintaining performance and data integrity.
 new_records:
-  description: >
-      This section defines the rules for generating new records in the e-commerce platform, specifying how many records can be created per organization. 
-      It ensures that the system can handle new data while maintaining performance and data integrity.
   customers: 5
   categories: 0
   suppliers: 0
@@ -30,20 +29,19 @@ new_records:
   returns: 1
   reviews: 3
 
-updates:
-  description: >
-      This section defines the update rules for the e-commerce platform, specifying how many records can be updated per organization. 
-      It ensures that updates are controlled and do not exceed specified limits, maintaining data integrity and consistency across the system.
+
+ # This section defines the update rules for the e-commerce platform, specifying how many records can be updated per organization. 
+# It ensures that updates are controlled and do not exceed specified limits, maintaining data integrity and consistency across the system.
+updates:   
   min_records_per_org: 12
   max_records_per_org: 20
 
 
-business_rules:
-  description: >
-      This section defines the business rules for the e-commerce platform, including order lifecycle, 
-      payment lifecycle, shipment lifecycle, return and review rules, and inventory management rules. 
-      These rules ensure that the system operates smoothly and maintains data integrity across various operations.
+# This section defines the business rules for the e-commerce platform, including order lifecycle, 
+# payment lifecycle, shipment lifecycle, return and review rules, and inventory management rules. 
+# These rules ensure that the system operates smoothly and maintains data integrity across various operations.
       
+business_rules:
   order_lifecycle:
     PENDING:
       - CONFIRMED
