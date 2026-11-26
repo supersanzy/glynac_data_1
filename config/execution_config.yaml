@@ -1,0 +1,28 @@
+execution_strategy: 
+  skip_successful_processing: true
+  retry_failed_processing: true
+  retry_scope: failed_orgs_only
+  retry_incomplete_snapshots: true
+  recovery_source: last_successful_snapshot
+  validate_snapshot: true
+
+
+execution_tracking:
+  scope:
+    - org_id
+    - processing_day
+
+  statuses:
+    - PENDING
+    - RUNNING
+    - COMPLETED
+    - FAILED
+
+execution_metadata:
+  fields:
+    - started_at
+    - completed_at
+    - failed_at
+    - retry_count
+    - error_messag
+
