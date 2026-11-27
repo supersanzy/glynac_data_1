@@ -24,5 +24,6 @@ execution_metadata:
     - completed_at
     - failed_at
     - retry_count
-    - error_messag
+    - error_message
+    - total_retry_count
 
