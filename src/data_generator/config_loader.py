@@ -17,8 +17,3 @@ def load_config(file_path):
         raise ValueError(f"Invalid YAML configuration: {file_path}") from e
 
 
-output = load_config("config/execution_config.yaml")
-# print(output["processing_rules"]["processing_dates"]["start_date"])
-# print(type(output["processing_rules"]["processing_dates"]["start_date"]))
-print(output)
-# print(type(output))
